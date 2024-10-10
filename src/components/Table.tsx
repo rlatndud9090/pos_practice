@@ -1,8 +1,5 @@
-import React from 'react';
-
-interface TableProps {
-  coordinateInfo: CoordinateInfo;
-}
+import styled from '@emotion/styled';
+import React, { useState } from 'react';
 
 interface CoordinateInfo {
   x: number;
@@ -11,11 +8,37 @@ interface CoordinateInfo {
   height: number;
 }
 
-const Table = (props: TableProps) => {
+interface Props {
+  name: string;
+  coordinateInfo: CoordinateInfo;
+}
+
+const Table = ({ name, coordinateInfo }: Props) => {
+  const [isFilled, setIsFilled] = useState<boolean>(false);
+
   return (
-    <div>
-      <p className="title">Title</p>
-      <div className="contents"></div>
+    <div
+      style={{
+        position: 'absolute',
+        border: 'solid 1px red',
+        backgroundColor: isFilled ? 'red' : 'white',
+        left: coordinateInfo.x,
+        top: coordinateInfo.y,
+        width: coordinateInfo.width,
+        height: coordinateInfo.height,
+        userSelect: 'none',
+      }}
+    >
+      <p
+        style={{
+          justifyContent: 'center',
+          marginTop: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        {name}
+      </p>
+      <div className="contents" />
     </div>
   );
 };

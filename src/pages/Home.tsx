@@ -1,11 +1,18 @@
 import React from 'react';
+import TableLayout, { TableInfo } from '../components/TableLayout';
 
 const Home = () => {
-  // Table마다 좌표, 크기, 주문 정보랑 토탈 가격 받아와서 object로 저장 -> map으로 보여주기
+  const tables: TableInfo[] = [
+    { name: '기본홀01', gridRect: { x: 1, y: 1, width: 5, height: 3 } },
+    { name: '기본홀02', gridRect: { x: 7, y: 5, width: 5, height: 3 } },
+    { name: '기본홀03', gridRect: { x: 3, y: 6, width: 5, height: 3 } },
+    { name: '기본홀04', gridRect: { x: 6, y: 9, width: 5, height: 3 } },
+  ];
+
   return (
     <div>
       <h1>Top Bar Component</h1>
-      <div>Table Layout Component</div>
+      <TableLayout tables={tables} />
     </div>
   );
 };
